@@ -9,9 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="text" HorizontalAlignment="Left" Height="107" Margin="604,396,0,0" TextWrapping="Wrap" Text="hello,world!" VerticalAlignment="Top" Width="313"/>
-        <Button x:Name="button" Content="Hello,world!" Margin="0,360,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center"/>
+        <Button x:Name="button" Content="进吧" Margin="0,360,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center"/>
         <Image x:Name="ImageView" HorizontalAlignment="Left" Margin="62,59,0,0" VerticalAlignment="Top" Height="25" Width="77"/>
+        <TextBox x:Name="inputBa" HorizontalAlignment="Center" Height="29" Margin="0,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
 
 
     </Grid>

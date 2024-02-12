@@ -18,6 +18,7 @@ using Windows.Web.Http;
 using HtmlAgilityPack;
 using System.Diagnostics;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Devices.Enumeration;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -58,14 +59,13 @@ namespace HelloWorld
         {
             this.InitializeComponent();
             FetchAndDisplayImage();
-            text.Visibility = Visibility.Collapsed;
             
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            text.Visibility = Visibility.Visible;
+            Frame.Navigate(typeof(BlankPage1),inputBa.Text);
             //LoadWebPage();
             //button.Visibility = Visibility.Collapsed;
         }
