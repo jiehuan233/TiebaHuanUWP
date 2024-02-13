@@ -9,12 +9,12 @@
   <Identity
     Name="9db2a61c-e322-405b-87ae-43b8ab9d8726"
     Publisher="CN=jiehuan"
-    Version="0.1.0.0" />
+    Version="0.1.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="9db2a61c-e322-405b-87ae-43b8ab9d8726" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>HelloWorld</DisplayName>
+    <DisplayName>TiebaHuanUWP</DisplayName>
     <PublisherDisplayName>jiehuan</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="HelloWorld.App">
       <uap:VisualElements
-        DisplayName="HelloWorld"
+        DisplayName="TiebaHuanUWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="HelloWorld"
+        Description="TiebaHuanUWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

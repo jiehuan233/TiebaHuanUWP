@@ -9,9 +9,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="Ba_Name" HorizontalAlignment="Left" Height="67" Margin="138,-5,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="280" SelectionChanged="TextBlock_SelectionChanged" FontSize="50"/>
-        <Button x:Name="back" Content="back" Height="48" Margin="10,7,0,0" VerticalAlignment="Top" Width="108" FontSize="25" Click="back_Click"/>
-        <WebView x:Name="Ba_Page" HorizontalAlignment="Center" Height="696" VerticalAlignment="Top" Width="412" Margin="0,62,0,0"/>
+        <Button x:Name="Ba_Name" Height="79" Margin="70,-8,0,0" Content="百度贴吧 吧" VerticalAlignment="Top" Width="280" FontSize="50" Click="Choose_Page">
+            <Button.Background>
+               <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="back" Content="&lt;back" Height="48" Margin="0,7,0,0" VerticalAlignment="Top" Width="89" FontSize="25" Click="back_Click">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <ListView x:Name="listView" Margin="10,60,1,7" SelectionMode="None" IsItemClickEnabled="True" ItemClick="listView_ItemClick" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
 
     </Grid>
 </Page>

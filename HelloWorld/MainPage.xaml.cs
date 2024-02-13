@@ -29,6 +29,7 @@ namespace HelloWorld
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //public string baname = "百度贴吧";
         private async void FetchAndDisplayImage()
         {
             // 使用 HttpClient 获取 HTML 内容
@@ -65,14 +66,21 @@ namespace HelloWorld
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(BlankPage1),inputBa.Text);
+            //baname = inputBa.Text;
+            string[] input= { inputBa.Text, "index" };
+            Frame.Navigate(typeof(BlankPage1),input);
             //LoadWebPage();
             //button.Visibility = Visibility.Collapsed;
         }
 
-        private void tieba_LoadCompleted(object sender, NavigationEventArgs e)
+        private void login_Click(object sender, RoutedEventArgs e)
         {
+            Frame.Navigate(typeof(BlankPage3), "login");
+        }
 
+        private void reg_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BlankPage3), "reg");
         }
     }
 }

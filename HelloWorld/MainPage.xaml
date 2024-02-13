@@ -9,9 +9,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="button" Content="进吧" Margin="0,360,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center"/>
+        <Button x:Name="button" Content="进吧" Margin="0,267,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center"/>
+        <Button x:Name="login" Content="登录" Height="40" Margin="150,52,0,0" VerticalAlignment="Top" Width="73" FontSize="20" Click="login_Click">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="reg" Content="注册" Height="40" Margin="232,52,0,0" VerticalAlignment="Top" Width="76" FontSize="20" Click="reg_Click">
+            <Button.Background>
+                <SolidColorBrush Opacity="0"/>
+            </Button.Background>
+        </Button>
         <Image x:Name="ImageView" HorizontalAlignment="Left" Margin="62,59,0,0" VerticalAlignment="Top" Height="25" Width="77"/>
-        <TextBox x:Name="inputBa" HorizontalAlignment="Center" Height="29" Margin="0,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
+        <TextBox x:Name="inputBa" HorizontalAlignment="Center" Height="29" Margin="0,213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="159"/>
 
 
     </Grid>
