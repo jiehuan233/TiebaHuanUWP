@@ -40,6 +40,7 @@ namespace HelloWorld
         {
             this.InitializeComponent();
         }
+        
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -95,7 +96,8 @@ namespace HelloWorld
             IEnumerable<HtmlNode> divNodes = htmlDocument.DocumentNode.Descendants("div")
                 .Where(d => d.Attributes.Contains("class") && d.Attributes["class"].Value == "i");
 
-            // 创建一个列表存储解析结果
+            texts.Add("上一页");
+            links.Add("before");
 
             // 遍历每个 div 标签，获取第一个 a 标签的链接
             foreach (HtmlNode divNode in divNodes)
@@ -108,6 +110,9 @@ namespace HelloWorld
                     links.Add(link);
                 }
             }
+            texts.Add("下一页");
+            links.Add("next");
+
             listView.ItemsSource = null;
             listView.ItemsSource = texts;
 
@@ -117,15 +122,59 @@ namespace HelloWorld
         private void listView_ItemClick(object sender, ItemClickEventArgs e)
         {
             //this.Frame.Navigate(typeof(Page1));
-            try
+            //try
+           // {
+                if (e.ClickedItem.ToString().Equals("上一页"))
+                {
+                    if (page > 1)
+                    {
+                        page-=2;
+                        pn -= 20;
+                        Dialog_NextButtonClick();
+                    }
+                }else if (e.ClickedItem.ToString().Equals("下一页"))
+                {
+                    Dialog_NextButtonClick();
+                }
+                else
+                {
+                try
+                {
+                    this.Frame.Navigate(typeof(BlankPage2), links[texts.BinarySearch(e.ClickedItem.ToString())]);
+                }
+                catch(Exception ex)
+                {
+                    bool is_Run = false;
+                    for(int i = 1; i <= 10; i++)
+                    {
+                        if (e.ClickedItem.ToString().Equals(texts[i]))
+                        {
+                            this.Frame.Navigate(typeof(BlankPage2), links[i]);
+                            is_Run = true; break;
+                        }
+                    }
+                    if (!is_Run)
+                    {
+                        throw ex;
+                    }
+                        
+                    
+                }
+                    
+                }
+                
+           // }
+           /* catch (Exception)
             {
-                this.Frame.Navigate(typeof(BlankPage2), links[texts.BinarySearch(e.ClickedItem.ToString())]);
-            }
-            catch (Exception)
-            {
-                this.Frame.Navigate(typeof(BlankPage2), links[9]);
-            }
+                this.Frame.Navigate(typeof(BlankPage2), links[10]);
+            }*/
             
+        }
+        private async void Refresh_Page(object sender, RoutedEventArgs e)
+        {
+            links.Clear();
+            texts.Clear();
+            get_posts(url + ba_name + "&pn=" + pn.ToString());
         }
         private async void Choose_Page(object sender, RoutedEventArgs e)
         {
@@ -161,7 +210,7 @@ namespace HelloWorld
 
             // 为ContentDialog的命令按钮添加事件处理程序
             dialog.PrimaryButtonClick += Dialog_PrimaryButtonClick;
-            dialog.SecondaryButtonClick += Dialog_SecondaryButtonClick;
+            dialog.SecondaryButtonClick += Dialog_NextButtonClick;
             dialog.CloseButtonClick += Dialog_YesButtonClick;
 
             // 显示ContentDialog
@@ -172,16 +221,19 @@ namespace HelloWorld
             sender.Hide();
         }
 
-        private void Dialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void Dialog_NextButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            Dialog_NextButtonClick();
+        }
+        private void Dialog_NextButtonClick()
         {
             page++;
             pn += 10;
-            urlall=url + ba_name + "&pn="+pn.ToString();
+            urlall = url + ba_name + "&pn=" + pn.ToString();
             links.Clear();
             texts.Clear();
             get_posts(urlall);
         }
-
         private async void Dialog_YesButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             StackPanel panel = sender.Content as StackPanel;

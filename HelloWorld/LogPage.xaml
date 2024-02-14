@@ -15,6 +15,7 @@
                 <SolidColorBrush Opacity="0"/>
             </Button.Background>
         </Button>
+        
         <WebView x:Name="log_page" Margin="27,60,27,5"/>
     </Grid>
 </Page>
